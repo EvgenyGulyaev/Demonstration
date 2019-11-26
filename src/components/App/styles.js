@@ -16,6 +16,9 @@ export const ImageContainer = styled.div`
   align-items: center;
   width: inherit;
   height: inherit;
+    @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyledImage = styled.img`
@@ -33,7 +36,6 @@ export const StyledImageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-right: ${({text}) => text === 'Input' ? '20px' : 0 };
-
 `;
 
 export const StyledContent = styled.div`
