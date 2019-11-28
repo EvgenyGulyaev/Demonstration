@@ -9,8 +9,10 @@ import {
 } from './styles';
 import Image from '../Image';
 import ImageStorage from '../ImageStorage';
+import Background from '../../assets/89250.jpg';
 
 const { url } = config;
+const backgroundImage = `url("${ Background }")`;
 
 const App = () => {
   const [image, setImage] = useState(null);
@@ -24,7 +26,7 @@ const App = () => {
       setFiles(files);
     }
     fetchData();
-  });
+  }, []);
 
   const onClickPicture = () => dropRef.current.click();
 
@@ -45,7 +47,7 @@ const App = () => {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <ParentContainer>
+    <ParentContainer style={{backgroundImage}}>
       <MainPage>
         <ImageContainer>
           <Image

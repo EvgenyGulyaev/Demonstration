@@ -8,6 +8,7 @@ export const ParentContainer = styled.div`
   min-height: 100%;
   width: 100%;
   height: 100%;
+  background-image: ${({srcBackground}) => `url(${srcBackground})`};
 `;
 
 export const ImageContainer = styled.div`
@@ -29,6 +30,7 @@ export const StyledImage = styled.img`
   width: 300px;
   line-height: 250px;
   text-align: center;
+  border-radius: 10px;
 `;
 
 export const StyledImageContainer = styled.div`
@@ -43,11 +45,12 @@ export const MainPage = styled.div`
 `;
 
 export const StyledImagesStorage = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 99%;
   position: absolute;
   top: 0;
   right: 0;
+  padding-right: 20px ;
   @media (max-width: 768px) {
     display: none;
   }

@@ -22,7 +22,7 @@ export const postImage = async (acceptedFiles) => {
 };
 
 
-export const getImage = async (acceptedFiles) => {
+export const getImage = async () => {
   try {
     const { data: res } = await axios({
       method: 'get',
