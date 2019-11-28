@@ -32,6 +32,6 @@ export const getImage = async () => {
   }
   catch (e) {
     console.log('error', e);
-    return {};
+    return [];
   }
 };
