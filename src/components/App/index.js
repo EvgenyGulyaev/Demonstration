@@ -24,9 +24,14 @@ const App = () => {
       setFiles(files);
     }
     fetchData();
-  }, []);
+  });
 
   const onClickPicture = () => dropRef.current.click();
+
+  const setMainPicture = ({mask, image} = {}) => {
+    setImage(`${url}/${image}`);
+    setMask(`${url}/${mask}`);
+  }
 
   const onDrop = useCallback(async (acceptedFiles) => {
     acceptedFiles = acceptedFiles.slice(0, 1).map(file => Object.assign(file, {
@@ -34,8 +39,7 @@ const App = () => {
       src: file.path,
     }));
     const { image, mask } =  await postImage(acceptedFiles);
-    setImage(`${url}/${image}`);
-    setMask(`${url}/${mask}`);
+    setMainPicture({ image, mask });
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -54,7 +58,10 @@ const App = () => {
           <Image name='Маска' src={mask} alt='Mask' />
         </ImageContainer>
 
-        <ImageStorage files={files}/>
+        <ImageStorage
+          setMainPicture={setMainPicture}
+          files={files}
+        />
       </MainPage>
 
       <StyledContent {...getRootProps()} ref={dropRef}>

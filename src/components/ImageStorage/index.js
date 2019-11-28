@@ -7,8 +7,17 @@ import Image from '../Image';
 
 const { url } = config;
 
-const ImageStorage = ({files}) => {
-  const images =  files.map(image => <Image key={image} src={`${url}/${image}`} alt='NotFound'/>);
+const createResImage = (image = '') => {
+  const [name, mime] = image.split('.');
+  return `${name}_res.${mime}`
+}
+
+const ImageStorage = ({files, setMainPicture}) => {
+  const images =  files.map(image => <Image
+    key={image} src={`${url}/${image}`}
+    onClick={() => setMainPicture({ image, mask: createResImage(image)})}
+    alt='NotFound'
+  />);
 
   return <StyledImageContainer>
     <StyledImagesStorage>
@@ -19,10 +28,12 @@ const ImageStorage = ({files}) => {
 
 ImageStorage.propTypes = {
   files: PropTypes.array,
+  setMainPicture: PropTypes.func,
 }
 
-ImageStorage.defaultProps ={
+ImageStorage.defaultProps = {
   files: [],
+  setMainPicture: () => null,
 }
 
 export default ImageStorage;
