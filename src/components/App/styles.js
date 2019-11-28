@@ -38,6 +38,21 @@ export const StyledImageContainer = styled.div`
   margin-right: ${({text}) => text === 'Input' ? '20px' : 0 };
 `;
 
+export const MainPage = styled.div`
+  height: inherit;
+`;
+
+export const StyledImagesStorage = styled.div`
+  overflow-y: scroll;
+  max-height: 99%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export const StyledContent = styled.div`
   display: none;
 `;
