@@ -42,6 +42,8 @@ const App = () => {
     }));
     const { image, mask } =  await postImage(acceptedFiles);
     setMainPicture({ image, mask });
+    const files = await getImage();
+    setFiles(files);
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
